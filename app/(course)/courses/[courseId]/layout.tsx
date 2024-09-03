@@ -6,6 +6,7 @@ import { getProgress } from "@/actions/get-progress";
 
 import { CourseSidebar } from "./_components/course-sidebar";
 import { CourseNavbar } from "./_components/course-navbar";
+import { WidgetChatBot } from "@/components/widget-chatbot";
 
 const CourseLayout = async ({
   children,
@@ -65,6 +66,7 @@ const CourseLayout = async ({
       </div>
       <main className="md:pl-80 pt-[80px] h-full">
         {children}
+        <WidgetChatBot />
       </main>
     </div>
   )
