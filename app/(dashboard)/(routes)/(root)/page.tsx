@@ -6,6 +6,7 @@ import { getDashboardCourses } from "@/actions/get-dashboard-courses";
 import { CoursesList } from "@/components/courses-list";
 
 import { InfoCard } from "./_components/info-card";
+import { WidgetChatBot } from "@/components/widget-chatbot";
 
 export default async function Dashboard() {
   const { userId } = auth();
@@ -37,6 +38,7 @@ export default async function Dashboard() {
       <CoursesList
         items={[...coursesInProgress, ...completedCourses]}
       />
+      <WidgetChatBot />
     </div>
   )
 }

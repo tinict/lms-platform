@@ -7,6 +7,7 @@ import { getCourses } from "@/actions/get-courses";
 import { CoursesList } from "@/components/courses-list";
 
 import { Categories } from "./_components/categories";
+import { WidgetChatBot } from "@/components/widget-chatbot";
 
 interface SearchPageProps {
   searchParams: {
@@ -46,6 +47,7 @@ const SearchPage = async ({
         />
         <CoursesList items={courses} />
       </div>
+      <WidgetChatBot />
     </>
    );
 }
