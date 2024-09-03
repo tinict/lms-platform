@@ -6,7 +6,7 @@ import { isTeacher } from "@/lib/teacher";
 
 export async function POST(
   req: Request,
-) {
+) { 
   try {
     const { userId } = auth();
     const { title } = await req.json();
@@ -28,3 +28,30 @@ export async function POST(
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
+
+export const GET = async (
+  req: Request,
+) => {
+  try {
+    // Protect api - verify user is teacher
+    const { userId } = auth();
+    if (!userId || !isTeacher(userId)) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const course = await db.course.findMany({
+      select: {
+        id: true,
+        userId: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      }
+    });
+
+    return NextResponse.json(course);
+  } catch (error) {
+    console.log("[API_GET_COURSES]", error);
+    return new NextResponse("Internal Error", { status: 500 });
+  }
+};
