@@ -8,6 +8,7 @@ import { columns } from "./_components/columns";
 
 const CoursesPage = async () => {
   const { userId } = auth();
+  console.log(userId);
 
   if (!userId) {
     return redirect("/");

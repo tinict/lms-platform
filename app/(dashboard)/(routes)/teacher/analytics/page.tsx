@@ -10,6 +10,7 @@ const AnalyticsPage = async () => {
   const { userId } = auth();
 
   if (!userId) {
+    console.log(userId);
     return redirect("/");
   }
 
