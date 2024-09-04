@@ -2,11 +2,7 @@
 
 import qs from "query-string";
 import { IconType } from "react-icons";
-import { 
-  usePathname, 
-  useRouter, 
-  useSearchParams
-} from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
@@ -25,7 +21,7 @@ export const CategoryItem = ({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const currentCategoryId = searchParams.get("categoryId");const currentTitle = searchParams.get("title");
+  const currentCategoryId = searchParams.get("categoryId"); const currentTitle = searchParams.get("title");
 
   const isSelected = currentCategoryId === value;
 

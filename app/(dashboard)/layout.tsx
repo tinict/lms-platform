@@ -1,6 +1,5 @@
 "use client";
 
-import { WidgetChatBot } from "@/components/widget-chatbot";
 import { Navbar } from "./_components/navbar";
 import { Sidebar } from "./_components/sidebar";
 

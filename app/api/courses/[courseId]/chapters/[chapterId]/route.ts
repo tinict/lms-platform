@@ -157,6 +157,34 @@ export async function PATCH(
     return NextResponse.json(chapter);
   } catch (error) {
     console.log("[COURSES_CHAPTER_ID]", error);
-    return new NextResponse("Internal Error", { status: 500 }); 
+    return new NextResponse("Internal Error", { status: 500 });
+  }
+}
+
+
+export async function GET(
+  req: Request,
+  { params }: { params: { courseId: string; chapterId: string } }
+) {
+  try {
+    const { userId } = auth();
+
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const data = await db.chapter.findUnique({
+      select: {
+        videoUrl: true
+      },
+      where: {
+        id: params.chapterId
+      }
+    });
+
+    return NextResponse.json(data);
+  } catch (error) {
+    console.log("[COURSES_CHAPTER_ID]", error);
+    return new NextResponse("Internal Error", { status: 500 });
   }
 }
