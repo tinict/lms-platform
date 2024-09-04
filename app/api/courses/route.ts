@@ -33,7 +33,6 @@ export const GET = async (
   req: Request,
 ) => {
   try {
-    // Protect api - verify user is teacher
     const { userId } = auth();
     if (!userId || !isTeacher(userId)) {
       return new NextResponse("Unauthorized", { status: 401 });
